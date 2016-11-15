@@ -9,7 +9,9 @@ class CreateAnswers < ActiveRecord::Migration[5.0]
       t.integer  :answer_id
       t.decimal  :decimal_value
       t.integer  :integer_value
+      t.integer  :document_id
       t.integer  :user_id
+      t.integer  :question_choice_id
     end
   end
 end
