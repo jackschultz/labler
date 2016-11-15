@@ -12,22 +12,6 @@
     </div>
 
 
-    <div class= "row">
-      <div class= "col-md-6">
-      <h5>Flag Song?</h5>
-      <%= form_for shallow_args(@document, @flag) do |f| %>
-        <div class="form-group">
-          <label class="form-label">Reasoning</label>
-          <%= f.text_area :reasoning, class:"form-control", rows: 4 %>
-        </div>
-        <div class="actions">
-          <%= f.submit "Submit", class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
-
-    <% end %>
-
   </div>
 
   <div class= "col-md-3">
@@ -35,32 +19,38 @@
       <button class="btn btn-primary" id="interface-toggle">Toggle Interface</button>
     </div>
 
-    <% if false %>
-    <div class="basic-interface" style="display:none">
-      <%= form_for @document, url: responses_document_path do |f| %>
+    <div class= "row" style="margin-top:20px;">
+      <div class= "col-md-12">
+        <%= form_for @document, url: responses_document_path do |f| %>
 
-          <%= render 'questions/multi_value_number_simple', f: f %>
+          <% @document.questions.each do |question| %>
+            <%= render "questions/#{question.question_type}", f: f, question: question %>
+          <% end %>
 
           <div class="actions">
             <%= f.submit "Submit", class: 'btn' %>
           </div>
-      <% end %>
-    </div>
-    <% end %>
 
-    <div>
-      <%= form_for @document, url: responses_document_path do |f| %>
-
-        <% @document.questions.each do |question| %>
-          <%= render "questions/#{question.question_type}", f: f, question: question %>
         <% end %>
-
-        <div class="actions">
-          <%= f.submit "Submit", class: 'btn' %>
-        </div>
-
-      <% end %>
+      </div>
     </div>
+
+
+    <div class="row" style="margin-top:20px;">
+      <div class= "col-md-12">
+        <h5>Flag Song?</h5>
+        <%= form_for shallow_args(@document, @flag) do |f| %>
+          <div class="form-group">
+            <label class="form-label">Reasoning</label>
+            <%= f.text_area :reasoning, class:"form-control", rows: 4 %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
 
   </div>
 
