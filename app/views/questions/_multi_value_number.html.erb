@@ -1,0 +1,25 @@
+
+<div class="advanced-interface">
+  <div class="form-group row">
+
+    <div>
+      <b><%= question.content %></b>
+    </div>
+    <%= f.fields_for :questions, question, include_id: false, index: question.id do |q| %>
+      <% question.question_choices.each_with_index do |question_choice, ai| %>
+          <label><%= question_choice.label %></label>
+          <%= q.fields_for :answers, current_user.answers.find_or_initialize_by(question: question, document: @document, question_choice_id: question_choice.id), index: ai do |ac| %>
+            <%= ac.hidden_field "question_choice_id", value: question_choice.id %>
+            <%= ac.number_field :integer_value, class:"form-control" %>
+            <% if question_choice.label == "Other" %>
+              <label>Write in Other topic</label>
+              <%= ac.text_field :string_value, class:"form-control" %>
+            <% end %>
+          <% end %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<%= render "questions/multi_value_number_simple" %>

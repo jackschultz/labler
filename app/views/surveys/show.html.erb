@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <div>
+      <h2><%= @survey.name %></h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div>
+      <h4>Instructions</h4>
+      <%= simple_format @survey.instructions %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Start with a random song', [@survey.random_document(current_user)], class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div>
+        <h5><%= @survey.incomplete_document_count(current_user) %> / <%= @survey.documents.count %> songs left to complete</h5>
+      </div>
+      <% if false %>
+        <h3>Complete</h3>
+        <% @survey.documents_completed_by_user(current_user).each do |document| %>
+          <div>
+            <%= link_to document.title, document %> by <%= document.author %> 
+          </div>
+        <% end %>
+        <h3>Incomplete</h3>
+        <% @survey.documents_not_completed_by_user(current_user).each do |document| %>
+          <div>
+            <%= link_to document.title, document %> by <%= document.author %> 
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

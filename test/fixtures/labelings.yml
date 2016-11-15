@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  document: one
+  label: one
+  quality: 1.5
+
+two:
+  document: two
+  label: two
+  quality: 1.5

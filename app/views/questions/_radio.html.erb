@@ -1,0 +1,21 @@
+<div class="form-group row">
+
+  <div>
+    <b><%= question.content %></b>
+  </div>
+
+  <%= f.fields_for :questions, question, include_id: false, index: question.id do |q| %>
+    <fieldset>
+      <%= q.fields_for :answer, current_user.answers.find_or_initialize_by(question: question, document: @document) do |a| %>
+        <% question.question_choices.each do |question_choice| %>
+          <div class="fields">
+            <label class="form-check-label">
+              <%= a.radio_button :question_choice_id, question_choice.id  %>
+            <%= question_choice.label %></label>
+          <% end %>
+        </div>
+      <% end %>
+      </fieldset>
+  <% end %>
+
+</div>

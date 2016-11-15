@@ -1,0 +1,118 @@
+<div class="simple-interface">
+        <div class="form-group row">
+          <%= hidden_field_tag 'answers[used_simple]', 'true', class: "used-simple" %>
+
+              <h3>Primary</h3>
+                  <fieldset class="primary_selections">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[primary_group]", "love", (@primary_label == "love")) %> Love / Opposite Sex
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[primary_group]", "small_towns", (@primary_label == "small_towns")) %> Small Town
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[primary_group]", "alcohol", (@primary_label == "alcohol")) %> Alcohol / Vices
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[primary_group]", "other", (@primary_label == "other")) %> Other
+                      </label>
+                    </div>
+                    <div class="form-group row primary-other-text"<% if @primary_label != "other"%> style="display:none"<% end %>>
+                      <label class="form-check-label col-md-3">Other?</label>
+                      <div class=" col-md-6">
+                        <%= text_field_tag("answers[primary_other_text]", @primary_other_value, class: "form-control") %>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <h3>Secondary</h3>
+                  <fieldset class="secondary_selections">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[secondary_group]", "love", (@secondary_label == "love")) %> Love / Opposite Sex
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[secondary_group]", "small_towns", (@secondary_label == "small_towns")) %> Small Town
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[secondary_group]", "alcohol", (@secondary_label  == "alcohol")) %> Alcohol / Vices
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[secondary_group]", "other", (@secondary_label == "other")) %> Other
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <%= radio_button_tag("answers[secondary_group]", "none", (@secondary_label  == "none")) %> None
+                      </label>
+                    </div>
+                    <div class="form-group row secondary-other-text"<% if @secondary != "other"%> style="display:none"<%end%>>
+                      <label class="form-check-label col-md-2">Other?</label>
+                      <div class=" col-md-6">
+                        <%= text_field_tag("answers[secondary_other_text]", @secondary_other_value, class: "form-control") %>
+                      </div>
+                    </div>
+                  </fieldset>
+
+
+                  <%= check_box_tag "answers[equal]", nil, @equal %> Check box if both topics are of equal importance
+
+        </div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  var interface = "basic";
+  $(".advanced-interface").hide();
+
+  $("input[name=answers\\[secondary_group\\]]:radio").change(function() {
+    if (this.value == "other") {
+      $(".secondary-other-text").show();
+    }
+    else {
+      $(".secondary-other-text").hide();
+    }
+  });
+
+  $("input[name=answers\\[primary_group\\]]:radio").change(function() {
+    if (this.value == "other") {
+      $(".primary-other-text").show();
+    }
+    else {
+      $(".primary-other-text").hide();
+    }
+  });
+
+  $("#interface-toggle").click(function() {
+    if (interface == "basic") {
+      $(".simple-interface").hide();
+      $(".advanced-interface").show();
+      $(".used-simple").val("false");
+      interface = "advanced";
+    }
+    else {
+      $(".simple-interface").show();
+      $(".advanced-interface").hide();
+      $(".used-simple").val("true");
+      interface = "basic";
+    }
+  });
+
+});
+
+</script>
