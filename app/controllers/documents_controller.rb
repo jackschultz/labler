@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
       primary_answer = question.max_answer_on_document_by_user(@document, current_user)
       @primary_label = primary_answer.question_choice.short_label
       if @primary_label == "other"
-        @primary_other_value = @primary.integer_value
+        @primary_other_value = primary_answer.integer_value
       end
       secondary_answer = question.second_max_answer_on_document_by_user(@document, current_user)
       if secondary_answer.integer_value.to_i == 0
