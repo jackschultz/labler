@@ -1,0 +1,9 @@
+<b><%= question.content %></b>
+<h6>
+  Choose one of the following
+</h6>
+<ul>
+  <% question.question_choices.each do |question_choice| %>
+    <li><%= question_choice.label %></li>
+  <% end %>
+</ul>

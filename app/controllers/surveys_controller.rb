@@ -1,29 +1,20 @@
 class SurveysController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
-  # GET /surveys
-  # GET /surveys.json
   def index
     @surveys = Survey.all
   end
 
-  # GET /surveys/1
-  # GET /surveys/1.json
   def show
   end
 
-  # GET /surveys/new
   def new
     @survey = Survey.new
   end
 
-  # GET /surveys/1/edit
   def edit
   end
 
-  # POST /surveys
-  # POST /surveys.json
   def create
     @survey = Survey.new(survey_params)
 
@@ -38,8 +29,6 @@ class SurveysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /surveys/1
-  # PATCH/PUT /surveys/1.json
   def update
     respond_to do |format|
       if @survey.update(survey_params)
@@ -52,8 +41,6 @@ class SurveysController < ApplicationController
     end
   end
 
-  # DELETE /surveys/1
-  # DELETE /surveys/1.json
   def destroy
     @survey.destroy
     respond_to do |format|
@@ -63,6 +50,7 @@ class SurveysController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_survey
     @survey = Survey.find(params[:id])

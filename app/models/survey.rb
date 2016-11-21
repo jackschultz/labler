@@ -18,7 +18,11 @@ class Survey < ApplicationRecord
   end
 
   def random_document(user=nil)
-    documents.incomplete_by_user(user).order("RANDOM()").first || documents.incomplete.order("RANDOM()").first
+    document = nil
+    if user
+      document = documents.incomplete_by_user(user).order("RANDOM()").first
+    end
+    document ||= documents.incomplete.order("RANDOM()").first
   end
 
   private

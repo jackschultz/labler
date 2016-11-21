@@ -1,0 +1,9 @@
+<b><%= question.content %></b>
+<h6>
+  Assign percentage to each of the following options
+</h6>
+<ul>
+  <% question.question_choices.each_with_index do |question_choice, ai| %>
+    <li><%= question_choice.label %></li>
+<% end %>
+</ul>

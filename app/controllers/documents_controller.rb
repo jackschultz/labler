@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy, :responses]
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :responses]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:responses]
 
   def index
     @documents = Document.all
@@ -10,26 +10,28 @@ class DocumentsController < ApplicationController
   def show
 
     question = @survey.questions.first #crappy way, but we know we want the first question
-    answers = current_user.answers.where(document: @document, question: question)
-    if answers.any?
-      primary_answer = question.max_answer_on_document_by_user(@document, current_user)
-      @primary_label = primary_answer.question_choice.short_label
-      if @primary_label == "other"
-        @primary_other_value = primary_answer.string_value
+    if current_user
+      answers = current_user.answers.where(document: @document, question: question)
+      if answers.any?
+        primary_answer = question.max_answer_on_document_by_user(@document, current_user)
+        @primary_label = primary_answer.question_choice.short_label
+        if @primary_label == "other"
+          @primary_other_value = primary_answer.string_value
+        end
+        secondary_answer = question.second_max_answer_on_document_by_user(@document, current_user)
+        if secondary_answer.integer_value.to_i == 0
+          @secondary_label = "none"
+        else
+          @secondary_label = secondary_answer.question_choice.short_label
+        end
+        if @secondary_label == "other"
+          @secondary_other_value = @response_group.second_max_response.value
+        end
+        @equal = primary_answer.integer_value == secondary_answer.integer_value
       end
-      secondary_answer = question.second_max_answer_on_document_by_user(@document, current_user)
-      if secondary_answer.integer_value.to_i == 0
-        @secondary_label = "none"
-      else
-        @secondary_label = secondary_answer.question_choice.short_label
-      end
-      if @secondary_label == "other"
-        @secondary_other_value = @response_group.second_max_response.value
-      end
-      @equal = primary_answer.integer_value == secondary_answer.integer_value
+      @flag = @document.flags.find_or_initialize_by(user: current_user)
     end
 
-    @flag = @document.flags.find_or_initialize_by(user: current_user)
   end
 
   def new
