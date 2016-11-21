@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Labeler</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+<body id="page-top" class="index">
+
+<% if false %>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-dark navbar-custom navbar-fixed-top">
+        <div class="container clearfix">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand page-scroll" href="#page-top">Labeler</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="nav-links">
+                <ul class="nav navbar-nav float-xs-right">
+                    <li class="nav-item">
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </nav>
+    <% end %>
+<nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+            ☰
+        </button>
+        <a class="navbar-brand page-scroll" href="#first">Bootstrap 4</a>
+        <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#one">Cards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#two">Flexbox</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#three">5 Tiers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#four">More</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#aboutModal">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Need a simple way to label documents?</div>
+                <div class="intro-heading">We got you covered</div>
+                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+            </div>
+        </div>
+    </header>
+
+
+<section id="two" class="bg-alt">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-xs-center">
+                <h2 class="m-t-0 text-primary">Flexbox</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 text-xs-center">
+                <div class="feature">
+                    <i class="icon-lg ion-ios-grid-view-outline wow fadeIn" data-wow-delay=".1s"></i>
+                    <h6 class="text-uppercase">Easier</h6>
+                    <p class="text-muted m-b-0">Flexbox provides <a href="http://v4-alpha.getbootstrap.com/getting-started/flexbox">simpler, more flexible layout</a> options like vertical centering.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 text-xs-center">
+                <div class="feature">
+                    <i class="icon-lg ion-social-sass wow fadeInUp"></i>
+                    <h6 class="text-uppercase">Sass-y</h6>
+                    <p class="text-muted m-b-0">Simply set the <code>$enable-flex</code> variable to <a target="ext" href="http://codeply.com/go/YFFFWHVoRB">enable flexbox</a> in Bootstrap 4.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 text-xs-center">
+                <div class="feature">
+                    <i class="icon-lg ion-social-css3-outline wow fadeIn" data-wow-delay=".1s"></i>
+                    <h6 class="text-uppercase">It's Modern</h6>
+                    <p class="text-muted m-b-0">Introduced in CSS3, flexbox won't work in older browsers like <a href="http://caniuse.com/#feat=flexbox">IE9</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</html>

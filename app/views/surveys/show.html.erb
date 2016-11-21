@@ -18,7 +18,7 @@
           <%= link_to 'Start with a random song', [@survey.random_document(current_user)], class: "btn btn-primary" %>
         </div>
       </div>
-      <div class="row" style="margin-top:20px;">
+      <div class="row top-space">
         <div class="col-md-12">
           <h5><%= @survey.incomplete_document_count(current_user) %> / <%= @survey.documents.count %> songs left to complete</h5>
         </div>
