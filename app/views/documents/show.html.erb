@@ -53,13 +53,14 @@
       </div>
     </div>
 
-  </div>
-
-  <div class= "col-md-2">
-    <%= link_to 'Random Song', [@document.next], class: "btn btn-primary" %>
-  </div>
-
+  <% else %>
+    You must be <%= link_to "signed in", user_session_path %> to answer the questions!
   <% end %>
+  </div>
+  <div class= "col-md-2">
+    <%= link_to 'Different Document', [@document.next], class: "btn btn-primary" %>
+  </div>
+
 
 </div>
 
