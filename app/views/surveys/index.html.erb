@@ -1,11 +1,14 @@
 <h1>Active Surveys</h1>
 
 <div class="row">
-  <div class="col-md-12">
-    <% @surveys.each do |survey| %>
-      <h3><%= link_to survey.name, survey %></h3>
-    <% end %>
-  </div>
+  <% @surveys.each do |survey| %>
+    <div class="col-md-4">
+      <div class="card card-block">
+        <h4><%= link_to survey.name, survey %></h4>
+        <p class="card-text"><%= simple_format survey.instructions %></p>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div>
